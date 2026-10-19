@@ -1,0 +1,22 @@
+-- 1. Tạo view cơ bản lấy customerNumber, customerName, phone
+CREATE OR REPLACE VIEW customer_views AS
+SELECT customerNumber, customerName, phone
+FROM customers;
+
+-- Truy vấn dữ liệu từ bảng ảo (view) vừa tạo
+SELECT * FROM customer_views;
+
+
+-- 2. Cập nhật (sửa đổi) view customer_views:
+-- Thêm họ tên liên hệ và chỉ lọc những khách hàng ở thành phố Nantes
+CREATE OR REPLACE VIEW customer_views AS
+SELECT customerNumber, customerName, contactFirstName, contactLastName, phone
+FROM customers
+WHERE city = 'Nantes';
+
+-- Truy vấn kiểm tra lại view sau khi đã cập nhật
+SELECT * FROM customer_views;
+
+
+-- 3. Xóa view khi không còn dùng nữa
+DROP VIEW customer_views;
